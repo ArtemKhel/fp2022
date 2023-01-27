@@ -1,3 +1,7 @@
+(** Copyright 2021-2022, ArtemKhel and contributors *)
+
+(** SPDX-License-Identifier: LGPL-3.0-or-later *)
+
 open Base
 open Ast
 open Env
@@ -102,20 +106,17 @@ module Interpreter = struct
     | _ -> Error "[%s] Too many/few arguments" #% name
 
   and eval_empty env =
-    list_op env "eval_empty" (fun l ->
-      match l with
+    list_op env "eval_empty" (function
       | [] -> return (VBool true)
       | _ -> return (VBool false))
 
   and eval_car env =
-    list_op env "eval_car" (fun l ->
-      match l with
+    list_op env "eval_car" (function
       | hd :: _ -> return hd
       | _ -> Error "[eval_car] List is empty")
 
   and eval_cdr env =
-    list_op env "eval_cdr" (fun l ->
-      match l with
+    list_op env "eval_cdr" (function
       | _ :: tl -> return (VList tl)
       | _ -> Error "[eval_cdr] List is empty")
 
@@ -209,8 +210,7 @@ module Interpreter = struct
       | None -> return None
       | Some e -> eval_expr env e)
 
-  and eval_datum datum =
-    match datum with
+  and eval_datum = function
     | DConst c -> eval_const c
     | DList l -> VList (List.map l ~f:eval_datum)
     | DAbbr (p, d) -> eval_dabbr p d
@@ -232,8 +232,7 @@ module Interpreter = struct
 
   and eval_apply env args =
     (* Here be kostyli (for Y combinator) *)
-    let unpack datum =
-      match datum with
+    let unpack = function
       | DConst c -> [ Const c ]
       | _ -> failwith "todo"
     in
@@ -262,8 +261,7 @@ module Interpreter = struct
        | _ -> Error "not implemented")
     | _ -> Error "[eval_apply] Too many/few arguments"
 
-  and eval_expr env expr =
-    match expr with
+  and eval_expr env = function
     | Const c -> return (eval_const c)
     | FuncCall (func, args) -> eval_func_call env func args
     | Var name -> eval_var env name

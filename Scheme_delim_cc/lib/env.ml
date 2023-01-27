@@ -1,3 +1,7 @@
+(** Copyright 2021-2022, ArtemKhel and contributors *)
+
+(** SPDX-License-Identifier: LGPL-3.0-or-later *)
+
 open Base
 open Utils
 
@@ -9,8 +13,7 @@ module Env = struct
   ;;
 
   let merge_envs first second =
-    Map.merge first second ~f:(fun ~key data ->
-      match data with
+    Map.merge first second ~f:(fun ~key -> function
       | `Left x | `Right x | `Both (x, _) -> Some x)
   ;;
 end
