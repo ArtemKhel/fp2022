@@ -3,11 +3,9 @@ open Scheme_delim_lib.Parser
 open Scheme_delim_lib.Env
 open Scheme_delim_lib.Interpreter
 
-
-let test_data =[
-  (* {|(display `(1 ,(+ 1 1) ,((lambda () 3)) ,(lambda () 4)))|};
-  {|(display '(1 '(2 '(3 4))))|}; *)
-  ]
+let test_data =
+  [ (* {|(display `(1 ,(+ 1 1) ,((lambda () 3)) ,(lambda () 4)))|};
+  {|(display '(1 '(2 '(3 4))))|}; *) ]
 ;;
 
 List.map test_data ~f:(fun input ->

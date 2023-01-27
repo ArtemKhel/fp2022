@@ -5,8 +5,9 @@
 
 (cram
  (package Scheme_delim_cc)
- (deps %{bin:scheme} 
-  ./factorial.scm 
+ (deps
+  %{bin:scheme}
+  ./factorial.scm
   ./plus_x.scm
   ./fibonacci.scm
   ./map.scm
@@ -14,5 +15,4 @@
   ./filter.scm
   ./iseven.scm
   ./y.scm
-  ./curry.scm
-   ))
+  ./curry.scm))
