@@ -15,7 +15,7 @@
 (homepage "https://github.com/ArtemKhel/fp2022")
 
 (package
- (name Scheme_delim)
+ (name Scheme_delim_cc)
  (synopsis "An interpreter for Scheme with delim/cc support")
  (description "An interpreter for Scheme with delim/cc support")
  (version 0.1)

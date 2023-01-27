@@ -1,10 +1,10 @@
 (test
  (name test)
- (package Scheme_delim)
- (libraries Scheme_delim.Lib base))
+ (package Scheme_delim_cc)
+ (libraries Scheme_delim_cc.Lib base))
 
 (cram
- (package Scheme_delim)
+ (package Scheme_delim_cc)
  (deps %{bin:scheme} 
   ./factorial.scm 
   ./plus_x.scm

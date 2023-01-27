@@ -6,5 +6,5 @@
 (executable
  (name main)
  (public_name scheme)
- (package Scheme_delim)
- (libraries Scheme_delim.Lib base stdio))
+ (package Scheme_delim_cc)
+ (libraries Scheme_delim_cc.Lib base stdio))

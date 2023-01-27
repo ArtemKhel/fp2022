@@ -5,7 +5,7 @@
 
 (library
  (name Scheme_delim_lib)
- (public_name Scheme_delim.Lib)
+ (public_name Scheme_delim_cc.Lib)
  (modules Parser Ast Interpreter Env Utils)
  (libraries base angstrom)
  (preprocess
@@ -13,4 +13,4 @@
  (inline_tests))
 
 (documentation
- (package Scheme_delim))
+ (package Scheme_delim_cc))
